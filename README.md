@@ -38,6 +38,7 @@ There are five Boolean parameters to control the stylesheet, and all are turned 
 * `debug` — Enable or disable the output of the temporary XML tree used to generate JSON. Note that turning this on invalidates the JSON output.
 * `jsonp` — Enable [JSONP](http://bob.pythonmac.org/archives/2005/12/05/remote-json-jsonp/); prepend the JSON output with the given string. Defaults to an empty string.
 * `skip-root` — Enable or disable skipping the root element and returning only the child elements of the root. Disabled by default.
+* `text-prop-name` — The name to use for the JSON property holding the text content of an element. By default it is "$".
 
 For example; to transform `source.xml` to BadgerFish JSON with Saxon, you would invoke the following on the command line:
 
