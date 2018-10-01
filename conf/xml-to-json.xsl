@@ -27,6 +27,8 @@
      * skip-root       -  Skip the root XML element.
      * jsonp           -  Enable JSONP; the JSON output will be prepended with
                           the value of the jsonp parameter and wrapped in parentheses.
+	 * text-prop-name  -  The name to use for the JSON property holding the text
+	                      content of an element. By default it is "$".
 
      Credits:
        Chick Markley (chick@diglib.org) - Octal number & numbers with terminating period.
@@ -49,6 +51,7 @@
   <xsl:param name="use-rayfish" as="xs:boolean" select="false()"/>
   <xsl:param name="jsonp" as="xs:string" select="''"/>
   <xsl:param name="skip-root" as="xs:boolean" select="false()"/>
+  <xsl:param name="text-prop-name" as="xs:string" select="'$'"/>
 
   <!--
     If you import or include the stylesheet in your own stylesheet you
@@ -201,7 +204,7 @@
               <xsl:copy-of select="json:create-namespaces($node)"/>
               <xsl:copy-of select="json:create-attributes($node)"/>
               <json:member>
-                <json:name>$</json:name>
+                <json:name><xsl:value-of select="$text-prop-name"/></json:name>
                 <json:value><xsl:value-of select="$node"/></json:value>
               </json:member>
             </json:object>
